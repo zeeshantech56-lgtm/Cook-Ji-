@@ -2923,16 +2923,69 @@
       // Distributor form (client-side only demo)
       const form = document.getElementById('distributorForm');
       const success = document.getElementById('formSuccess');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
+      // Form logic is handled by the Firebase module below
+    });
+
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxRE5valJWW12tXzTAXgCTddjgqAfAZAU",
+      authDomain: "cook-ji.firebaseapp.com",
+      projectId: "cook-ji",
+      storageBucket: "cook-ji.firebasestorage.app",
+      messagingSenderId: "799331454585",
+      appId: "1:799331454585:web:a1653332dac5641a7bcea8",
+      measurementId: "G-NGKVBM75B9"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById('distributorForm');
+    const success = document.getElementById('formSuccess');
+    const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+        }
+
+        const checkboxes = form.querySelectorAll('input[name="interest"]:checked');
+        const interests = Array.from(checkboxes).map(cb => cb.value);
+
+        try {
+          await addDoc(collection(db, "distributorInquiries"), {
+            name: document.getElementById('dName').value,
+            business: document.getElementById('dBiz').value,
+            city: document.getElementById('dCity').value,
+            phone: document.getElementById('dPhone').value,
+            interests: interests,
+            message: document.getElementById('dMsg').value,
+            timestamp: new Date().toISOString()
+          });
+          
           success.classList.add('show');
           form.reset();
           success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-      }
-    });
-
+        } catch (error) {
+          console.error("Error adding document: ", error);
+          alert("Something went wrong. Please try again.");
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Inquiry";
+          }
+        }
+      });
+    }
   </script>
 </body>
 
