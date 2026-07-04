@@ -2972,6 +2972,25 @@
             timestamp: new Date().toISOString()
           });
           
+          // Send email notification via Web3Forms
+          await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              access_key: "22d5df3e-804c-4597-9e1f-dfb72a0d6bc7",
+              subject: "New Distributor Inquiry from " + document.getElementById('dName').value,
+              name: document.getElementById('dName').value,
+              business: document.getElementById('dBiz').value,
+              city: document.getElementById('dCity').value,
+              phone: document.getElementById('dPhone').value,
+              interests: interests.join(", "),
+              message: document.getElementById('dMsg').value
+            })
+          });
+          
           success.classList.add('show');
           form.reset();
           success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
