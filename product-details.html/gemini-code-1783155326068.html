@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dal Pyaz Samosa Details | Cook Ji Snacks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Brand Tokens */
+:root {
+  --red: #D5070D;
+  --red-dark: #a80509;
+  --green: #AECC2A;
+  --green-dark: #6F8F12;
+  --white: #FCFBFA;
+  --cream: #FFF8EC;
+  --gold: #F4C542;
+  --ink: #2A2712;
+  --ink-soft: #5C5A40;
+  --line: rgba(111,143,18,0.18);
+  --radius-sm: 12px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --container: 1200px;
+  --pad: clamp(20px, 5vw, 64px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); margin: 0 0 .5em; }
+a { text-decoration: none; color: inherit; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 40px var(--pad);
+}
+
+/* Navbar */
+.nav { border-bottom: 1px solid var(--line); padding: 15px 0; background: var(--white); }
+.nav .container { padding-top: 0; padding-bottom: 0; display: flex; justify-content: space-between; align-items: center; }
+.back-btn { font-weight: 700; color: var(--green-dark); font-size: 15px; transition: color 0.2s; }
+.back-btn:hover { color: var(--red); }
+
+/* Product Layout */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 20px;
+}
+
+/* Image Gallery */
+.main-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(42,39,18,0.08);
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  background-color: var(--white);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.thumb:hover, .thumb.active {
+  border-color: var(--red);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(42,39,18,0.1);
+}
+
+/* Product Info */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-info h1 { font-size: 42px; line-height: 1.1; margin-bottom: 10px; }
+.price-tag { 
+  display: inline-block;
+  font-size: 28px; 
+  font-family: var(--font-display); 
+  color: var(--red); 
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.description { color: var(--ink-soft); font-size: 16px; margin-bottom: 30px; }
+
+.details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+  border-top: 1px solid var(--line);
+}
+
+.details-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.details-list span:first-child { font-weight: 700; color: var(--ink); }
+.details-list span:last-child { color: var(--ink-soft); text-align: right; max-width: 60%; }
+
+.btn-primary {
+  background: var(--red);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(213,7,13,0.28);
+}
+
+@media (max-width: 768px) {
+  .product-layout { grid-template-columns: 1fr; gap: 40px; }
+  .product-info h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation with Logo -->
+<div class="nav">
+  <div class="container">
+    <a href="cookji-preview-v7 (1).html" class="back-btn">← Back to Menu</a>
+    <img src="ChatGPT Image Jul 3, 2026, 10_27_19 PM.png" alt="Cook Ji Snacks Logo" style="height: 110px; object-fit: contain;">
+  </div>
+</div>
+
+<!-- Product Details Section -->
+<div class="container product-layout">
+  
+  <!-- Left Side: Image Gallery -->
+  <div class="gallery">
+    <!-- Main Image (Defaults to the Ready/Dry Fried Samosas) -->
+    <img id="mainImg" src="Screenshot 2026-07-04 142119.png" alt="Dal Pyaz Samosa" class="main-image">
+    
+    <!-- Thumbnails with your provided images -->
+    <div class="thumbnail-row">
+      <img src="Screenshot 2026-07-04 142119.png" class="thumb active" onclick="changeImage(this)" alt="Frozen Samosas">
+      <img src="Screenshot 2026-07-04 142129.png" class="thumb" onclick="changeImage(this)" alt="Thawing Samosas">
+      <img src="Screenshot 2026-07-04 142136.png" class="thumb" onclick="changeImage(this)" alt="Samosa Filling">
+      <img src="Screenshot 2026-07-04 142149.png" class="thumb" onclick="changeImage(this)" alt="Frying Samosas">
+      <img src="moong-dal-samosa_620x330_51517923256.webp" class="thumb" onclick="changeImage(this)" alt="Prepared Samosas">
+      <img src="sam.png" class="thumb" onclick="changeImage(this)" alt="Ingredients">
+    </div>
+  </div>
+
+  <!-- Right Side: Details -->
+  <div class="product-info">
+    <h1>Authentic Dal Pyaz Samosa</h1>
+    <div class="price-tag">₹4.50 <span style="font-size:15px; color:var(--ink-soft); font-family:var(--font-body); font-weight:500;">/ piece</span></div>
+    
+    <p class="description">
+      Experience the true taste of Indore. Our signature Dal Pyaz Samosas feature a perfectly crisp, hand-folded pastry shell stuffed with a spicy, tangy filling of premium lentils and onions. Flash-frozen to lock in the flavor and hygiene. Follow our simple steps from freezer to pan for the perfect golden crunch.
+    </p>
+
+    <ul class="details-list">
+      <li><span>Ingredients</span> <span>Wheat Flour, Lentils (Dal), Onions, Spices, Oil</span></li>
+      <li><span>Dietary Preference</span> <span>100% Vegetarian</span></li>
+      <li><span>Shelf Life</span> <span>12 Hours</span></li>
+      <li><span>Preparation</span> <span>Thaw at room temp, then deep fry until golden brown</span></li>
+    </ul>
+
+    <a href="https://wa.me/919685786220?text=I%20want%20to%20order%20Dal%20Pyaz%20Samosas" class="btn-primary" target="_blank">Order via WhatsApp</a>
+  </div>
+
+</div>
+
+<script>
+  // Image swapping script
+  function changeImage(element) {
+    document.getElementById('mainImg').src = element.src;
+    
+    // Remove active class from all thumbs
+    let thumbs = document.querySelectorAll('.thumb');
+    thumbs.forEach(thumb => thumb.classList.remove('active'));
+    
+    // Add active class to clicked thumb
+    element.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
